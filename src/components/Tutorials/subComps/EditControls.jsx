@@ -22,6 +22,7 @@ import { useDispatch } from "react-redux";
 import RemoveStepModal from "./RemoveStepModal";
 import ColorPickerModal from "./ColorPickerModal";
 import { Box, Stack } from "@mui/system";
+import VoiceToText from "./voicetotext";
 
 const EditControls = ({
   isPublished,
@@ -134,6 +135,9 @@ const EditControls = ({
         >
           <AddIcon /> Add New Step
         </Button>
+        <div>
+          <VoiceToText/>
+        </div>
         <Button
           className="ml-24"
           color="warning"
