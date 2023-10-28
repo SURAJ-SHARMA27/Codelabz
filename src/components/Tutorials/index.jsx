@@ -152,7 +152,9 @@ const ViewTutorial = () => {
   useEffect(() => {
     if (stepsData) {
       setTimeRemaining(TutorialTimeRemaining(stepsData, currentStep));
-      getCurrentStepContentFromFirestore(tutorial_id, stepsData[currentStep].id)(
+      getCurrentStepContentFromFirestore(tutorial_id, stepsData && currentStep >= 0 && currentStep < stepsData.length
+        ? stepsData[currentStep].id
+        : stepsData[0].id)(
         firestore,
         dispatch
       );
@@ -178,23 +180,32 @@ const ViewTutorial = () => {
         {allowEdit && (
           <Grid>
             <Grid xs={24} sm={24} md={24}>
-              <EditControls
-                isPublished={tutorialData.isPublished}
-                stepPanelVisible={stepPanelVisible}
-                isDesktop={isDesktop}
-                noteID={stepsData[currentStep].id}
-                setMode={mode => setMode(mode)}
-                mode={mode}
-                toggleImageDrawer={() => setImageDrawerVisible(true)}
-                tutorial_id={tutorialData.tutorial_id}
-                toggleAddNewStep={() =>
-                  setAddNewStepModalVisible(!addNewStepModalVisible)
-                }
-                visibility={stepsData[currentStep].visibility}
-                owner={owner}
-                currentStep={currentStep}
-                step_length={stepsData.length}
-              />
+              
+              <EditControls 
+        isPublished={tutorialData.isPublished}
+        stepPanelVisible={stepPanelVisible}
+        isDesktop={isDesktop}
+        noteID={
+          stepsData && currentStep >= 0 && currentStep < stepsData.length
+            ? stepsData[currentStep].id
+            : stepsData[0].id
+        }
+        setMode={mode => setMode(mode)}
+        mode={mode}
+        toggleImageDrawer={() => setImageDrawerVisible(true)}
+        tutorial_id={tutorialData.tutorial_id}
+        toggleAddNewStep={() =>
+          setAddNewStepModalVisible(!addNewStepModalVisible)
+        }
+        visibility={
+          stepsData && currentStep >= 0 && currentStep < stepsData.length
+            ? stepsData[currentStep].visibility
+            : stepsData[0].visibility
+        }
+        owner={owner}
+        currentStep={currentStep}
+        step_length={stepsData ? stepsData.length : 0}
+      />
             </Grid>
           </Grid>
         )}
