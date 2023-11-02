@@ -215,18 +215,7 @@ export default function CardWithPicture({ tutorial }) {
             <KeyboardArrowDownIcon />
           </ToggleButton>
         </ToggleButtonGroup>
-        <IconButton aria-label="share" data-testId="CommentIcon">
-          <ChatOutlinedIcon />
-        </IconButton>
-        <IconButton aria-label="add to favorites" data-testId="ShareIcon">
-          <ShareOutlinedIcon />
-        </IconButton>
-        <IconButton aria-label="share" data-testId="NotifIcon">
-          <TurnedInNotOutlinedIcon />
-        </IconButton>
-        <IconButton aria-label="share" data-testId="MoreIcon">
-          <MoreVertOutlinedIcon />
-        </IconButton>
+        
       </CardActions>
     </Card>
   );

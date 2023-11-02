@@ -8,14 +8,20 @@ import { makeStyles } from "@mui/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "space-between",
-    flex: 1,
+    alignItems: "center",
+    flexWrap: "wrap", // Allow content to wrap to the next line on small screens
     padding: "8px",
-    alignItems: "center"
-  }
+  },
+  title: {
+    flex: "1", // Expand to fill remaining space
+    [theme.breakpoints.down("sm")]: {
+      flex: "auto", // Auto-width on small screens
+    },
+  },
 }));
 
 function Activity() {
@@ -26,36 +32,36 @@ function Activity() {
     {
       id: 1,
       icon: LocalOfferIcon,
-      text: "Featured"
+      text: "Featured",
     },
     {
       id: 2,
       icon: StarBorderIcon,
-      text: "New"
+      text: "New",
     },
     {
       id: 3,
       icon: EmojiEventsIcon,
-      text: "Top"
-    }
+      text: "Top",
+    },
   ];
 
   return (
     <React.Fragment>
       <Grid container data-testId="activityCard">
         <div className={classes.root}>
-          <Grid item>
+          <div className={classes.title}>
             <Typography variant="h6">Activity</Typography>
-          </Grid>
-          <Grid item>
+          </div>
+          <div>
             <ActivityList
               value={List}
-              toggle={item => {
+              toggle={(item) => {
                 setList(item.id);
               }}
               acitvitylist={acitvitylist}
             />
-          </Grid>
+          </div>
         </div>
       </Grid>
     </React.Fragment>

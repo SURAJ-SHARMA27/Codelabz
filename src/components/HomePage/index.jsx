@@ -201,7 +201,7 @@ function HomePage({ background = "white", textColor = "black" }) {
       data-testId="homepage"
     >
       <Grid container justifyContent="center" className={classes.contentPart}>
-        <Grid item xs={2} className={classes.sideBody}>
+        <Grid item xs={12} sm={1} md={1} lg={1} className={classes.sideBody}>
           {windowSize.width > 750 && (
             <Grid
               item
@@ -217,7 +217,7 @@ function HomePage({ background = "white", textColor = "black" }) {
               }}
             >
               <Grid item className={classes.outerSideBar}>
-                <SideBar open={openMenu} toggleSlider={toggleSlider} />
+                <SideBar open={openMenu } toggleSlider={toggleSlider} />
               </Grid>
             </Grid>
           )}
@@ -226,7 +226,7 @@ function HomePage({ background = "white", textColor = "black" }) {
           item
           className={classes.mainBody}
           data-testId="homepageMainBody"
-          xs={6}
+          xs={12} sm={6} md={4} lg={5}
         >
           <NewCodelabz setVisibleModal={setVisibleModal} />
           <NewTutorial
@@ -303,7 +303,7 @@ function HomePage({ background = "white", textColor = "black" }) {
           </Box>
         </Grid>
 
-        <Grid item className={classes.sideBody} xs={3}>
+        <Grid item className={classes.sideBody} xs={12} sm={3} md={3} lg={3}>
           <Grid
             item
             container

@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
 		margin: "1rem 1rem 2rem 1rem",
 		height: "100%",
 		flexDirection: "column",
-		[theme.breakpoints.down(960)]: {
-			display: "none",
-		},
 		maxWidth: "300px",
 	},
 	cardBody: {
