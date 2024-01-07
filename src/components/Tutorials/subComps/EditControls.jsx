@@ -135,7 +135,7 @@ const EditControls = ({
           <AddIcon /> Add New Step
         </Button>
         <div>
-          <VoiceToText/>
+          <VoiceToText />
         </div>
         <Button
           className="ml-24"
