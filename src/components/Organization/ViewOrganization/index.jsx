@@ -20,6 +20,7 @@ import Description from "../../UserDetails/Description";
 import Spinner from "../../../helpers/spinner";
 import ActivityList from "../../Topbar/Activity/ActivityList";
 import { BasicImage, NoImage } from "../../../helpers/images";
+import Tag from "../../UserDetails/Tag";
 const useStyles = makeStyles(theme => ({
   acitvitylist: {
     padding: theme.spacing(1),
@@ -124,6 +125,10 @@ const ViewOrganization = () => {
       });
   }, [db, profileData.uid]);
 
+  const [currentOrgData, setCurrentOrgData] = useState(CurrentOrg);
+
+  // console.log({ profileData })
+
   const handleOrgSubscription = async () => {
     if (!currentOrgData.userSubscription)
       await subscribeOrg(handle)(firebase, firestore, dispatch);
@@ -136,14 +141,6 @@ const ViewOrganization = () => {
         data: { loading }
       }
     }) => loading
-  );
-
-  const currentOrgData = useSelector(
-    ({
-      org: {
-        data: { data }
-      }
-    }) => data
   );
 
   const organizations = useSelector(
@@ -255,6 +252,14 @@ const ViewOrganization = () => {
                         <Description
                           Heading={"Description"}
                           Content={currentOrgData.org_description}
+                        />
+                      </Grid>
+                      <Grid  item>
+                        <Tag
+
+                          Heading={"Tags"}
+                          Content={currentOrgData.org_tags}
+
                         />
                       </Grid>
                       <Grid item>
